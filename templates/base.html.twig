@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
+		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>"> {% block stylesheets %}{% endblock %}{% block javascripts %}{% endblock %}
+
+		<!-- Bootstrap 5.3 CSS (Version stable officielle) -->
+		<link
+		href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+		<!-- Bootstrap Icons & FontAwesome -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+		<link
+		rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+		<!-- Ton CSS personnel TOUJOURS en dernier pour écraser si besoin -->
+		<link rel="stylesheet" href="{{ asset('Assets/CSS/main.css') }}">
+	</head>
+	<body>
+		<header>
+			<!-- Navbar -->
+			<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+				<div class="container-fluid">
+
+					<a class="navbar-brand d-flex align-items-center" href="#">
+						<i class="fas fa-pizza-slice fa-lg mx-2"></i>
+
+					</a>
+
+					<!-- Bouton Hamburger mobile -->
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+
+					<!-- Contenu de la Navbar -->
+					<div
+						class="collapse navbar-collapse" id="navbarSupportedContent">
+
+						<!-- Liens de navigation principaux -->
+						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+							<li class="nav-item">
+								<a class="nav-link" href="{{path('app_recette_index')}}">Accueil</a>
+							</li>
+							<li class="nav-item">
+
+								<a class="nav-link" href="{{path('admin')}}">Administration</a>
+							</li>
+						</ul>
+
+
+						<ul
+							class="navbar-nav ms-auto align-items-center">
+							<!-- Dropdown Ajout -->
+							<li class="nav-item dropdown me-3">
+								<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+									<i class="fa-solid fa-plus"></i>
+								</a>
+								<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+									<li>
+										<a class="dropdown-item" href="#">Nouvelle recette</a>
+									</li>
+									<li>
+										<a class="dropdown-item" href="#">Nouvelle catégorie</a>
+									</li>
+									<li><hr class="dropdown-divider"/></li>
+									<li>
+										<a class="dropdown-item" href="#">Paramètres</a>
+									</li>
+								</ul>
+							</li>
+
+							<!-- Dropdown Profil -->
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+									<img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=100&q=80" class="rounded-circle" height="32" width="32" alt="Avatar"/>
+								</a>
+								<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown1">
+									<li>
+										<a class="dropdown-item" href="#">Mon Profil</a>
+									</li>
+									<li><hr class="dropdown-divider"/></li>
+									<li>
+										<a class="dropdown-item text-danger" href="#">Déconnexion</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+			<!-- Navbar -->
+		</header>
+		{% block body %}{% endblock %}
+		<!-- Remplace ton ancien script par celui-ci tout en bas du body -->
+		 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+	</body>
+</html>

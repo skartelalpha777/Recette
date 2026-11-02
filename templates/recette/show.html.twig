@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Recette{% endblock %}
+
+{% block body %}
+    <h1>Recette</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ recette.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ recette.titre }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ recette.description }}</td>
+            </tr>
+            <tr>
+                <th>TempsMinutes</th>
+                <td>{{ recette.tempsMinutes }}</td>
+            </tr>
+            <tr>
+                <th>Difficult</th>
+                <td>{{ recette.difficult }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ recette.image }}</td>
+            </tr>
+            <tr>
+                <th>Favori</th>
+                <td>{{ recette.favori ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_recette_index') }}">Retour à la liste</a>
+
+{% endblock %}

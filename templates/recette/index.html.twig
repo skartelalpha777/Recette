@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil
+{% endblock %}
+
+{% block body %}
+	<body>
+
+
+		<div class="container">
+			<div class="row mb-5">
+				<div class="col d-flex justify-content-center align-items-center flex-column text-center">
+					<h1 class="fw-bold mb-2">Accueil</h1>
+					<p class="text-muted fs-5 mb-0" style="max-width: 600px;">
+						Découvrez notre sélection de recettes savoureuses et trouvez l'inspiration pour vos prochains repas en quelques clics.
+					</p>
+				</div>
+			</div>
+
+
+			<div class="row mt-4">
+				<div class="col d-flex justify-content-center">
+					<form class="row gy-2 gx-3 align-items-center">
+						<div class="col-auto">
+							<label class="visually-hidden" for="autoSizingInput">Name</label>
+							<input type="text" class="form-control" id="searchInput" placeholder="Trouver une recette">
+						</div>
+
+						<div class="col-auto">
+							<label class="visually-hidden" for="Categories">Preference</label>
+							<select class="form-control" id="categorie">
+								<option value="toutes" selected>Toutes la categories</option>
+								{% for cat in categories %}
+									<option value="{{cat.nom}}">{{cat.nom}}</option>
+								{% endfor %}
+
+							</select>
+
+						</div>
+						<div class="col-auto">
+							<select class="form-control" id="trie">
+								<option value="default" selected>par defaut</option>
+								<option value="temps">par temps de préparation</option>
+								<option value="titre">par titre</option>
+							</select>
+						</div>
+					</form>
+
+				</div>
+			</div>
+			<div id="url" data-show-url="{{ path('app_recette_show', {id: 'replace_id'}) }}"></div>
+			<div class="row g-4 mt-4" id="cardRow"></div>
+
+		</div>
+		 <script src="{{asset('Assets/JS/script.js')}}"></script>
+	</body>
+{% endblock %}
