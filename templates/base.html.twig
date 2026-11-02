@@ -54,38 +54,34 @@
 
 						<ul
 							class="navbar-nav ms-auto align-items-center">
-							<!-- Dropdown Ajout -->
-							<li class="nav-item dropdown me-3">
-								<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-									<i class="fa-solid fa-plus"></i>
-								</a>
-								<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-									<li>
-										<a class="dropdown-item" href="#">Nouvelle recette</a>
-									</li>
-									<li>
-										<a class="dropdown-item" href="#">Nouvelle catégorie</a>
-									</li>
-									<li><hr class="dropdown-divider"/></li>
-									<li>
-										<a class="dropdown-item" href="#">Paramètres</a>
-									</li>
-								</ul>
-							</li>
 
 							<!-- Dropdown Profil -->
 							<li class="nav-item dropdown">
 								<a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-									<img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=100&q=80" class="rounded-circle" height="32" width="32" alt="Avatar"/>
+									<img src="https://static.vecteezy.com/ti/vecteur-libre/p1/26530349-anonyme-la-personne-silhouette-icone-vecteur-vectoriel.jpg" class="rounded-circle" height="32" width="32" alt="Avatar"/>
 								</a>
 								<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown1">
-									<li>
-										<a class="dropdown-item" href="#">Mon Profil</a>
-									</li>
-									<li><hr class="dropdown-divider"/></li>
-									<li>
-										<a class="dropdown-item text-danger" href="#">Déconnexion</a>
-									</li>
+
+									{% if app.user %}
+										<li>
+											<a class="dropdown-item" href="{{path('app_user_show',{id:app.user.id})}}">Mon Profil</a>
+										</li>
+
+										<li>
+											<a class="dropdown-item text-danger" href="{{path('app_logout')}}">Déconnexion</a>
+										</li>
+									{% else %}
+										<li>
+											<a class="dropdown-item text-danger" href="{{path('app_login')}}">Se connecter</a>
+										</li>
+										<li>
+											<a class="dropdown-item text-danger" href="{{path('app_user_new')}}">S'inscrire</a>
+										</li>
+
+
+									{% endif %}
+
+
 								</ul>
 							</li>
 						</ul>
