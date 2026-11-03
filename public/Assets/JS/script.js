@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     filtrer = toutesLesRecettes.member;
     afficherRecettes(toutesLesRecettes.member);
     appliquerFiltres(toutesLesRecettes.member);
-  //  liker();
+    //  liker();
 
 });
 
@@ -24,9 +24,8 @@ function liker() {
     for (let btn of document.querySelectorAll(".likebtn")) {
         btn.addEventListener('click', async (e) => {
             let card = document.getElementById(btn.dataset.id);
-            card.classList.toggle("text-danger");
             let recetteId = btn.dataset.id;
-            console.log(recetteId)
+           // console.log(recetteId)
 
             let recette = filtrer.find(element => element.id == recetteId);
 
@@ -44,6 +43,9 @@ function liker() {
                 }
 
                 const data = await response.json();
+               // console.log(data);
+                recette.favori = data.favori;
+                btn.classList.toggle("text-danger", recette.favori);
                 return data;
             } catch (error) {
                 console.error('Erreur lors de la requête PATCH :', error);
